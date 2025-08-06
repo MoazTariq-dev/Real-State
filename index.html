@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moaz/Realstate - موقع العقارات المتميز</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --secondary: #0e2e6d;
+            --accent: #ff7e29;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #e2e8f0;
+        }
+        
+        .search-box {
+            background: white;
+            border-radius: 50px;
+            padding: 5px;
+            display: flex;
+            max-width: 700px;
+            margin: 40px auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 20px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        
+        .search-box button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #e06616;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 40px 25px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Properties Section */
+        .properties {
+            padding: 80px 0;
+        }
+        
+        .properties-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .property-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .property-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .property-card:hover .property-img img {
+            transform: scale(1.1);
+        }
+        
+        .property-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .property-content {
+            padding: 25px;
+        }
+        
+        .property-price {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .property-address {
+            color: var(--gray);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .property-details {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 15px;
+        }
+        
+        .detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .detail i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Agents Section */
+        .agents {
+            padding: 80px 0;
+            background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
+        }
+        
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .agent-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding-bottom: 25px;
+        }
+        
+        .agent-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .agent-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .agent-info {
+            padding: 20px;
+        }
+        
+        .agent-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .agent-position {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 15px;
+            }
+            
+            .search-box input, .search-box button {
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .property-price {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <h1>Moaz/<span>Realstate</span></h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#properties"><i class="fas fa-house-user"></i> العقارات</a></li>
+                    <li><a href="#agents"><i class="fas fa-user-tie"></i> الوكلاء</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> عنا</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#contact" class="cta-button">إضافة عقار</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>ابحث عن منزل أحلامك مع Moaz/Realstate</h2>
+            <p>نقدم لك أفضل الخيارات العقارية في جميع أنحاء المملكة مع خدمة مميزة و أسعار تنافسية</p>
+            
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن منطقة أو مدينة...">
+                <button><i class="fas fa-search"></i> بحث</button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>عقار متاح</p>
+                </div>
+                <div class="stat-item">
+                    <h3>120+</h3>
+                    <p>عميل سعيد</p>
+                </div>
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p>وكيل عقاري</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تختار Moaz/Realstate؟</h2>
+                <p>نحن نقدم أفضل الخدمات العقارية لعملائنا الكرام</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search-location"></i>
+                    <h3>بحث متقدم</h3>
+                    <p>أدوات بحث متطورة تساعدك في العثور على العقار المناسب بسرعة وسهولة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>وساطة موثوقة</h3>
+                    <p>فريق من الوكلاء المحترفين لضمان صفقات آمنة وموثوقة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>أسعار تنافسية</h3>
+                    <p>عروض وأسعار تنافسية تناسب جميع الميزانيات</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم فني 24/7</h3>
+                    <p>خدمة عملاء متاحة على مدار الساعة لتلبية جميع احتياجاتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties" id="properties">
+        <div class="container">
+            <div class="section-title">
+                <h2>العقارات المميزة</h2>
+                <p>استعرض أحدث عروضنا العقارية المميزة</p>
+            </div>
+            
+            <div class="properties-filter">
+                <button class="filter-btn active">الكل</button>
+                <button class="filter-btn">للبيع</button>
+                <button class="filter-btn">للإيجار</button>
+                <button class="filter-btn">فيلات</button>
+                <button class="filter-btn">شقق</button>
+            </div>
+            
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1475&q=80" alt="فيلا فاخرة">
+                        <div class="property-tag">للبيع</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">2,500,000 ر.س</div>
+                        <h3>فيلا فاخرة في حي الياسمين</h3>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الرياض، حي الياسمين</span>
+                        </div>
+                        <p>فيلا فاخرة مساحة 400 متر، 5 غرف نوم، 4 حمامات، صالة كبيرة، مطبخ حديث، حديقة خاصة، مواقف سيارات.</p>
+                        <div class="property-details">
+                            <div class="detail">
+                                <i class="fas fa-bed"></i>
+                                <span>5 غرف</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-bath"></i>
+                                <span>4 حمامات</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-vector-square"></i>
+                                <span>400 م²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="شقة راقية">
+                        <div class="property-tag">للإيجار</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">80,000 ر.س/سنوي</div>
+                        <h3>شقة راقية في حي الصحافة</h3>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>جدة، حي الصحافة</span>
+                        </div>
+                        <p>شقة فاخرة مساحة 180 متر، 3 غرف نوم، 3 حمامات، صالة كبيرة، مطبخ مفتوح، شرفة مميزة، خدمات فندقية.</p>
+                        <div class="property-details">
+                            <div class="detail">
+                                <i class="fas fa-bed"></i>
+                                <span>3 غرف</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-bath"></i>
+                                <span>3 حمامات</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-vector-square"></i>
+                                <span>180 م²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="فيلا عصرية">
+                        <div class="property-tag">للبيع</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">1,800,000 ر.س</div>
+                        <h3>فيلا عصرية في حي النخيل</h3>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الدمام، حي النخيل</span>
+                        </div>
+                        <p>فيلا حديثة مساحة 320 متر، 4 غرف نوم، 3 حمامات، صالة واسعة، مطبخ مجهز، حديقة أمامية وخلفية، مواقف سيارات.</p>
+                        <div class="property-details">
+                            <div class="detail">
+                                <i class="fas fa-bed"></i>
+                                <span>4 غرف</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-bath"></i>
+                                <span>3 حمامات</span>
+                            </div>
+                            <div class="detail">
+                                <i class="fas fa-vector-square"></i>
+                                <span>320 م²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agents Section -->
+    <section class="agents" id="agents">
+        <div class="container">
+            <div class="section-title">
+                <h2>وكلاؤنا العقاريون</h2>
+                <p>فريق من الخبراء لمساعدتك في رحلة البحث عن العقار المثالي</p>
+            </div>
+            
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="agent-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="وكيل عقاري">
+                    </div>
+                    <div class="agent-info">
+                        <h3 class="agent-name">محمد السليم</h3>
+                        <p class="agent-position">مدير المبيعات</p>
+                        <p>خبرة 10 سنوات في السوق العقاري المحلي والدولي</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-img">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="وكيلة عقارية">
+                    </div>
+                    <div class="agent-info">
+                        <h3 class="agent-name">نورة الفهد</h3>
+                        <p class="agent-position">مديرة العقارات الفاخرة</p>
+                        <p>متخصصة في العقارات الراقية والفيلات الفاخرة</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-img">
+                        <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="وكيل عقاري">
+                    </div>
+                    <div class="agent-info">
+                        <h3 class="agent-name">خالد الراشد</h3>
+                        <p class="agent-position">خبير الاستثمار العقاري</p>
+                        <p>يساعدك في العثور على أفضل الفرص الاستثمارية</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+                <p>يسعدنا مساعدتك في أي استفسار أو طلب</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>العنوان</h3>
+                            <p>الرياض، حي العليا، شارع الملك فهد</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>الهاتف</h3>
+                            <p>+966 11 123 4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>البريد الإلكتروني</h3>
+                            <p>info@moaz-realstate.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>ساعات العمل</h3>
+                            <p>الأحد - الخميس: 8 صباحاً - 5 مساءً</p>
+                            <p>الجمعة والسبت: مغلق</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Moaz/Realstate</h3>
+                    <p>نقدم لك أفضل الخدمات العقارية في المملكة العربية السعودية. نساعدك في العثور على العقار المناسب بسهولة وأمان.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> العقارات</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الوكلاء</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> عنا</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> شراء عقار</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> بيع عقار</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> إيجار عقار</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> استشارات عقارية</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تقييم عقاري</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك في نشرتنا البريدية لتصلك أحدث العروض والعقارات الجديدة</p>
+                    <form class="newsletter">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="cta-button">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Moaz/Realstate. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // In a real implementation, you would filter properties here
+                // This is just a placeholder for the demonstration
+            });
+        });
+        
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('شكراً لتواصلك معنا! سوف نرد عليك في أقرب وقت ممكن.');
+                this.reset();
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
